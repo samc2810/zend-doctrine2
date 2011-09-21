@@ -1,18 +1,10 @@
 <?php
 
-class IndexController extends Zend_Controller_Action {
-
-    /**
-     *
-     * @var \Doctrine\ORM\EntityManager
-     */
-    private $_em;
+class IndexController extends Sam_Controller_Action {
 
     public function init() {
 	/* Initialize action controller here */
 	parent::init();
-	$registry = Zend_Registry::getInstance();
-	$this->_em = $registry->entitymanager;
     }
 
     public function indexAction() {

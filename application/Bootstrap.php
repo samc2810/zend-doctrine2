@@ -2,6 +2,12 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
+    public function _initAutoload() {
+
+	$autoloader = Zend_Loader_Autoloader::getInstance();
+	$autoloader->registerNamespace('Sam_');
+    }
+
     /**
      * Initialize Doctrine
      * @return Doctrine_Manager
@@ -11,20 +17,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 	require_once('Doctrine/Common/ClassLoader.php');
 //	$classLoader->register();
 	$zendLoader = Zend_Loader_Autoloader::getInstance();
-	
-	$classLoader = new \Doctrine\Common\ClassLoader('Doctrine',APPLICATION_PATH . '/../library/');
+
+	$classLoader = new \Doctrine\Common\ClassLoader('Doctrine', APPLICATION_PATH . '/../library/');
 	$zendLoader->pushAutoloader(array($classLoader, 'loadClass'), 'Doctrine');
 
 	$classLoader = new \Doctrine\Common\ClassLoader('Entities', realpath(__DIR__ . '/doctrine/'), 'loadClass');
 	$zendLoader->pushAutoloader(array($classLoader, 'loadClass'), 'Entities');
-	
+
 	$classLoader = new \Doctrine\Common\ClassLoader('Repositories', realpath(__DIR__ . '/doctrine/'), 'loadClass');
 	$zendLoader->pushAutoloader(array($classLoader, 'loadClass'), 'Repositories');
-	
+
 	$classLoader = new \Doctrine\Common\ClassLoader('Symfony', APPLICATION_PATH . '/../library/Doctrine');
 	$zendLoader->pushAutoloader(array($classLoader, 'loadClass'), 'Symfony');
 //	$classLoader->register();
-
 	// create the Doctrine configuration
 	$config = new \Doctrine\ORM\Configuration();
 
