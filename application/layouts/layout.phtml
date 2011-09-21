@@ -1,0 +1,65 @@
+<?php
+echo '<?xml version="1.0"?>
+';
+#
+echo $this->doctype('XHTML1_STRICT');
+#
+
+#
+echo '
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+		<head>
+		<meta content="text/html; charset=charset=utf-8" http-equiv="Content-type"/>';
+#
+
+//#
+////-- Meta-Tags setzen
+//#
+//$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
+//#
+//$this->headMeta()->appendName('keywords', 'Zend Framework PHP Tutorial');
+//#
+////-- Meta-Tags ausgeben
+//#
+//echo $this->headMeta();
+//#
+
+#
+//-- Externes Stylesheet einbinden
+#
+#
+$this->headTitle()->prepend('ZendApplication');
+#
+$this->headTitle()->setSeparator(' - ');
+#
+
+#
+//-- Titel ausgeben
+#
+echo $this->headTitle();
+#
+
+#
+echo '</head>
+        <body>
+            
+            <div id="main">';
+
+#
+//-- Hauptseite einbinden
+#
+
+
+#
+?>
+<div id="content">
+    <?php echo $this->layout()->content ?>
+</div>
+
+<?php 
+echo '
+             </div>
+             
+        </body>
+    </html>';
+?>
