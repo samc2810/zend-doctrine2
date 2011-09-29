@@ -41,6 +41,10 @@ class TableAddress {
      */
     protected $persons;
     
+    public function __construct(){
+	$this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     public function getId() {
 	return $this->id;
     }
@@ -73,7 +77,9 @@ class TableAddress {
 	$this->persons = $persons;
     }
 
+    
+    public function addPerson(\Entities\TablePerson $per){
+	$this->persons[] = $per;
+    }
 
 }
-
-?>

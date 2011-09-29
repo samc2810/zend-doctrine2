@@ -84,6 +84,12 @@ class EntitiesTableAddressProxy extends \Entities\TableAddress implements \Doctr
         return parent::setPersons($persons);
     }
 
+    public function addPerson(\Entities\TablePerson $per)
+    {
+        $this->__load();
+        return parent::addPerson($per);
+    }
+
 
     public function __sleep()
     {

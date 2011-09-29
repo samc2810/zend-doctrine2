@@ -6,8 +6,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
 	$autoloader = Zend_Loader_Autoloader::getInstance();
 	$autoloader->registerNamespace('Sam_');
+	$autoloader->registerNamespace('Bvb_');
     }
-    
+
     /**
      * Initialize Doctrine
      * @return Doctrine_Manager
@@ -59,7 +60,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 	    'user' => $connectionSettings['conn']['user'],
 	    'password' => $connectionSettings['conn']['pass'],
 	    'dbname' => $connectionSettings['conn']['dbname'],
-	    'host' => $connectionSettings['conn']['host']
+	    'host' => $connectionSettings['conn']['host'],
+	    'charset' => 'utf8',
+	    'driverOptions' => array(
+		1002 => 'SET NAMES utf8'
+	    )
 	);
 	$entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
 

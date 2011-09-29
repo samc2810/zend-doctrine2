@@ -84,6 +84,12 @@ class EntitiesTablePersonProxy extends \Entities\TablePerson implements \Doctrin
         return parent::setAddresses($addresses);
     }
 
+    public function addAddress(\Entities\TableAddress $add)
+    {
+        $this->__load();
+        return parent::addAddress($add);
+    }
+
 
     public function __sleep()
     {
